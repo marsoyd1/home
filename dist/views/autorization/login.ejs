@@ -1,0 +1,30 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+
+<div class="border-solid border-2 border-gray-600 rounded-lg p-10 absolute left-1/3 top-1/3">
+  <p class='pb-8 font-semibold text-center text-xl'>Войти в аккаунт</p>
+  <form action="/login" method="post" class="">
+    <div class="">
+      <label for="username" class="text-center block ml-auto mr-auto mb-4">Имя пользователя</label>
+      <% if(loyalPass == true) { %>
+      <input type="text" class="border-solid border-2 border-black rounded-lg" name="username">
+      <% }else{ %>
+      <input type="text" class="border-solid border-2 border-black rounded-lg" name="username">
+      <% } %>
+    </div>
+    <div class="form-group">
+      <label for="password" class="text-center block ml-auto mr-auto mb-4 mt-4">Пароль</label>
+      <% if(loyalPass == true) { %>
+      <input type="password" class="border-solid border-2 border-black rounded-lg" name="password">
+      <% }else{ %>
+      <input type="password" class="border-solid border-2 border-black rounded-lg" name="password">
+      <% } %>
+    </div>
+    <% if(loyalPass != true) { %>
+    <p style="color: red;"><%= loyalPass%></p>
+    <% } %>
+    <input type="submit" value="Войти" class="block ml-auto mb-3 mr-auto mt-4 h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 hover:text-white hover:bg-indigo-700 ">
+  </form>
+  <a class="text-center" href="/registration">Зарегистрироваться</a>
+</div>
+<%- include('../particles/footer.ejs') %>

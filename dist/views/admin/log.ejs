@@ -1,0 +1,100 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+
+<div class="m-1 ml-2 div_body">
+
+</div>
+
+<div class="div_button_load">
+
+</div>
+    <script>
+function createItem(data, action){
+    let body = document.querySelector("body")
+    let div = document.querySelector(".div_body")
+
+
+    let div1 = document.createElement('div');
+    div1.classList.add('w-full', 'bg-gray-200', 'border-b-2', 'flex', 'border-black')
+
+    let p1 = document.createElement('p')
+    p1.innerText = action
+
+    let p2 = document.createElement('p');
+    p2.innerText = new Date(data).toLocaleString();
+    p2.classList.add('mr-4')
+
+    div.appendChild(div1)
+    div1.appendChild(p2)
+    div1.appendChild(p1)
+
+}
+    let offset
+    let count = <%= log %>;
+    console.log(count)
+    // if (<%= log.length %> > 100){
+        // offset = <%= log.length %> - 100;
+    // }else{
+        // console.log('ok')
+        offset = 0;
+    // }
+    // console.log(offset)
+
+function getItems() {
+    let items = [];
+
+    pass = 12345678
+    fetch('http://127.0.0.1:3000/admin/logs', {
+        method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                pass : pass,
+                offset: offset
+            })
+    })
+        .then((response) => { return response.json(); })
+        .then((data) => {items = data})
+        .finally(() => {
+            for (let i = 0; i < items.length; i++) {
+                createItem(items[i].dataaction, items[i].action)
+            }
+        })
+
+        offset = offset + 100
+        return offset
+    }
+
+    offset = getItems(offset);
+    button_load(offset, count)
+function button_load(offset, count){
+            if(count != 0){
+                if(offset < count){
+                    btnLoad = document.createElement("button")
+                    btnLoad.classList.add('btnLoad');
+                    btnLoad.innerHTML = 'загрузить ещё'
+
+                    div_coment = document.querySelector(".div_button_load");
+
+                    div_coment.appendChild(btnLoad)
+
+                    btnLoad.addEventListener('click', () => {
+
+                        offset = getItems(offset);
+        
+                        btnLoad.remove();
+
+                        button_load(offset, count);
+
+                        
+                    })
+              }
+            }
+        }
+
+    </script>
+
+    <!-- <script src="/js/app.js"></script> -->
+
+<%- include('../particles/footer.ejs') %>

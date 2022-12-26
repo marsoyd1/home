@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id    Int    @id @default(autoincrement())
+  username String @db.VarChar(255)
+  password String @db.VarChar(255)
+  Role Int
+  home_id home[]
+}
+
+model home {
+  id    Int    @id @default(autoincrement())
+  name_home String @db.VarChar(255)
+  datacreate DateTime  @db.DateTime(1)
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id Int
+  light lights[]
+  socket sockets[]
+}
+model lights{
+  id Int @id @default(autoincrement())
+  name_lights String @db.VarChar(255)
+  home home @relation(fields: [home_id], references: [id], onDelete: Cascade)
+  home_id Int
+  value Int 
+}
+
+model sockets{
+  id Int @id @default(autoincrement())
+  name_sockets String @db.VarChar(255)
+  home home @relation(fields: [home_id], references: [id], onDelete: Cascade)
+  home_id Int
+  value Int
+}
+
+model ip{
+    id Int @id @default(autoincrement())
+    ip String @db.VarChar(255)
+}
+
+model log{
+      id Int @id @default(autoincrement())
+      dataaction DateTime  @db.DateTime(1)
+      action String @db.Text
+}

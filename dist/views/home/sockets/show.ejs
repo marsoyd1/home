@@ -1,0 +1,32 @@
+<%- include('../../particles/header.ejs') %>
+<%- include('../../particles/navigation.ejs') %>
+<%- include('../navigation.ejs') %>
+
+<h1>Розетки</h1>
+
+<a href="/home/<%= item[0].id %>/sockets/create"> Создать розетки</a>
+
+<div class="m-4">
+<% for(let i = 0; i<sockets.length; i++){ %>
+    <div class="border-solid border-2 border-gray-600 rounded-lg inline-block p-4 ml-2 mt-1.5">
+        <p>название <%= sockets[i].name_sockets %></p>
+        <% if(sockets[i].value == 0){ %>
+            <p>Cтатус: Выключено</p>
+            <form action="/home/<%=item[0].id %>/sockets/edit" method="post">
+                <input type="hidden" value="<%= sockets[i].id %>" name="id">
+                <input type="hidden" value="1" name="value">
+                <input type="submit" value="Включить" class="block ml-auto mb-1 mr-auto mt-2 h-7 px-4 font-semibold rounded-md border border-slate-200 text-slate-900 hover:text-white hover:bg-indigo-700">
+            </form>
+        <% }else{ %>
+            <p>Cтатус: Включено</p>
+            <form action="/home/<%=item[0].id %>/sockets/edit" method="post">
+                <input type="hidden" value="<%= sockets[i].id %>" name="id">
+                <input type="hidden" value="0" name="value">
+                <input type="submit" value="Выключить" class="block ml-auto mb-1 mr-auto mt-2  h-7 px-4 font-semibold rounded-md border border-slate-200 text-slate-900 hover:text-white hover:bg-indigo-700">
+            </form>
+        <% } %>
+    </div>
+<% } %>
+</div>
+
+<%- include('../../particles/footer.ejs') %>

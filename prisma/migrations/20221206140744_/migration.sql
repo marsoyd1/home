@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `ip` MODIFY `ip` VARCHAR(255) NOT NULL;

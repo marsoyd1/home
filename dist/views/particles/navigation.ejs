@@ -1,0 +1,18 @@
+<div class="flex bg-slate-600 h-16 p-1 pt-2 pl-4 pr-5 text-white">
+    <div class="pt-2">
+        <a class="text-white ml-2 " href="/">Умныный дом</a>
+        <% if(auth) { %>
+
+            <a class="absolute left-96" href="/home">Дома</a>
+
+            <form action="/logout" method="post" class="">
+                <input class="absolute right-60 top-4" type="submit" value="Выйти" >
+            </form>
+
+            <p class="absolute top-0 right-2 pt-4 pr-5 text-white">Аккаунт: <%=username%></p>
+        <% } else {%>
+            <a href="/login" class="absolute top-0 right-2 pt-4 pr-5">Войти</a>
+        <% } %>
+    </div>
+
+</div>

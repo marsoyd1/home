@@ -1,0 +1,14 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+<%- include('./navigation.ejs') %>
+
+<p>Дата созданния: <%= time %></p>
+
+
+
+
+<form action="/home/<%= item[0].id %>/destroy" method="post">
+    <input type="submit" value="удалить дом">
+</form>
+
+<%- include('../particles/footer.ejs') %>

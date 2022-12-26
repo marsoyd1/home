@@ -1,0 +1,15 @@
+<%- include('../../particles/header.ejs') %>
+<%- include('../../particles/navigation.ejs') %>
+
+<form action="/home/<%= home_id %>/sockets/store" method="post" class="border-solid border-2 border-gray-600 rounded-lg p-10 absolute left-1/3 top-1/3">
+    <label for="name_sockets" class="text-center block ml-auto mr-auto mb-4">Имя розетки</label>
+    <input type="text" class="border-solid border-2 border-gray-600 rounded-lg" name="name_sockets" placeholder="Имя розетки">
+
+    <p style="color: red;"><%= loyalLights%></p>
+
+    <input type="submit" value="Создать" class="block ml-auto mr-auto mt-4 h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 hover:text-white hover:bg-indigo-700 " >
+
+</form>
+
+
+<%- include('../../particles/footer.ejs') %>

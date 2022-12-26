@@ -1,0 +1,17 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+
+<% for(let i = 0; i<users.length; i++){ %>
+    <div class="w-full bg-gray-200 border-b-2 border-black">
+        <p>Имя пользователя: <%= users[i].username %></p>
+        <p>Пароль: <%= users[i].password %></p>
+        <p>Level: <%= users[i].Role %></p>
+
+        <form action="/admin/users/destroy" method="post">
+            <input type="hidden" name="id" value="<%= users[i].id %>">
+            <input type="submit" class="absolute right-2" value="удалить пользователя">
+        </form>
+    </div>
+<% } %>
+
+<%- include('../particles/footer.ejs') %>

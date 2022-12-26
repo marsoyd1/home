@@ -1,0 +1,13 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+
+<div class="m-1 ml-2">
+    <% for(let i = 0; ip.length> i;i++){ %>
+        <div class="w-full bg-gray-200 border-b-2 flex border-black ">
+            <p class="">IP: <%= ip[i].ip %></p>
+
+        </div>
+    <% } %>
+    </div>
+
+<%- include('../particles/footer.ejs') %>

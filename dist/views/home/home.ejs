@@ -1,0 +1,14 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+
+<a class="absolute right-14" href="/home/create">Создать дом</a>
+
+<div class="home__div">
+<% for(let i = 0; i<item.length ; i++){ %>
+    <div class="home__div__div">
+        <a href="/home/<%= item[i].id %>"><p><%= item[i].name_home %></p></a>
+    </div>
+<% } %>
+</div>
+
+<%- include('../particles/footer.ejs') %>

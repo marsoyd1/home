@@ -1,0 +1,17 @@
+<%- include('../particles/header.ejs') %>
+<%- include('../particles/navigation.ejs') %>
+<div>
+<% for(let i = 0; item.length> i;i++){ %>
+    <div class="w-full bg-gray-200 border-b-2 flex border-black ">
+        <p class="">Name: <a href="/home/<%= item[i].id %>"><%= item[i].name_home %></a></p>
+
+        <p class="ml-24">Владелец <%= item[i].user.username %></p>
+
+        <form action="/home/<%= item[0].id %>/destroy" method="post">
+            <input class="absolute right-2" type="submit" value="удалить дом">
+        </form>
+    </div>
+<% } %>
+</div>
+
+<%- include('../particles/footer.ejs') %>
