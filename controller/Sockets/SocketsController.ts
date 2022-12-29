@@ -1,13 +1,11 @@
 import express ,{ Express ,Request, Response } from 'express';
 import session from 'express-session';
 import "../Auth/authorizationInerface";
-import { LogController } from '../LogController';
 import { HomeRepository } from '../repositories/HomeRepository';
 import { SocketsRepository } from '../repositories/SocketsRepository';
 
 const homeRepository = new HomeRepository();
 const socketsRepository = new SocketsRepository();
-const log = new LogController();
 
 export class SocketsController{
     async sockets(req: Request, res: Response){

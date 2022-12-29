@@ -3,11 +3,9 @@ import session from 'express-session';
 import md5 from 'md5';
 import path from 'path';
 import "./authorizationInerface";
-import { LogController } from '../LogController';
 import { AuthRepository } from '../repositories/AuthRepository';
 
 const authRepository = new AuthRepository();
-// const log = new LogController();
 
 export class AutorizationController{
     async registration_post(req: Request, res: Response) {

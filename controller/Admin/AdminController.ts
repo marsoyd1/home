@@ -1,10 +1,8 @@
 import express ,{ Express ,Request, Response } from 'express';
 import session from 'express-session';
 import "../Auth/authorizationInerface";
-import { LogController } from '../LogController';
 import { AdminRepository } from '../repositories/AdminRepository';
 
-const log = new LogController();
 const cors = require('cors');
 const adminRepository = new AdminRepository();
 

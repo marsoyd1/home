@@ -1,13 +1,11 @@
 import express ,{ Express ,Request, Response } from 'express';
 import session from 'express-session';
 import "../Auth/authorizationInerface";
-import { LogController } from '../LogController';
 import { HomeRepository } from '../repositories/HomeRepository';
 import { LightsRepository } from '../repositories/LightsRepository';
 
 const lightsRepository = new LightsRepository();
 const homeRepository = new HomeRepository();
-const log = new LogController();
 
 export class LightsController{
     async lights(req: Request, res: Response){

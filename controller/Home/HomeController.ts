@@ -1,12 +1,10 @@
 import express ,{ Express ,Request, Response } from 'express';
 import session from 'express-session';
 import "../Auth/authorizationInerface";
-import { LogController } from '../LogController';
 import { HomeRepository } from '../repositories/HomeRepository';
 import { LightsRepository } from '../repositories/LightsRepository';
 import { SocketsRepository } from '../repositories/SocketsRepository';
 
-const log= new LogController();
 const homeRepository = new HomeRepository();
 const lightsRepository = new LightsRepository();
 const socketsRepository = new SocketsRepository();
@@ -133,7 +131,7 @@ export class HomeController {
                 if(name_home != ""){
                     homeRepository.update(Number(id), name_home);
                     homeRepository.updateLog(req.body.name_homeauth, name_home, String(req.session.username));
-                    res.redirect("/home/" + id + "/settings");
+                    res.redirect("/home/" + id);
                 }else{
                     res.redirect("/home/" + id);
                 };
