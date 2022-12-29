@@ -68,6 +68,7 @@ export class LightsController{
                     home_id: req.params.id  ,
                     loyalLights: req.session.loyalLights
                 });
+                req.session.loyalLights =undefined;
             }else{
                 res.redirect("/home" );
             };

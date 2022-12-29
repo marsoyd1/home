@@ -68,6 +68,7 @@ export class SocketsController{
                     home_id: req.params.id  ,
                     loyalLights: req.session.loyalSockets,
                 });
+                req.session.loyalSockets = undefined;
             }else{
                 res.redirect("/home");
             };

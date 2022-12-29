@@ -66,7 +66,6 @@ export class AutorizationController{
                 req.session.auth = true;
                 req.session.username = [req.body.username][0];
                 req.session.loyalPassb = true;
-                // log.adapter('Выполнен вход в аккаунт ' + [req.body.username][0]);
                 authRepository.loginLog([req.body.username][0]);
             } else {
                 req.session.loyalPass = "Неверный логин или пароль";
@@ -79,7 +78,6 @@ export class AutorizationController{
         req.session.auth = false;
         req.session.authId = undefined;
         req.session.authRole = undefined;
-        // log.adapter('Выполнен выход из аккаунта ' + req.session.username);
         authRepository.logoutLog(String(req.session.username));
         req.session.username = undefined;
         res.redirect("/");
@@ -93,6 +91,7 @@ export class AutorizationController{
                 errRegistSt: req.session.errRegistSt,
                 username: req.session.username,
             });
+            req.session.errRegistSt = undefined;
         }else{
             res.redirect("/");
         };
@@ -106,7 +105,7 @@ export class AutorizationController{
                 loyalPass: req.session.loyalPass,
                 loyalPassb: req.session.loyalPassb,
             });
-            
+            req.session.loyalPass = undefined;           
         }else{
             res.redirect("/");
         };

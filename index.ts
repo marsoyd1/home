@@ -99,12 +99,12 @@ app.post("/home/create", (req: Request, res: Response) => {
 });
 
 app.get("/home/:id", [checkAuth, checkHome],(req: Request, res: Response) => {
-  homeController.show(req, res);
+  homeController.info(req, res);
 });
 
-app.get("/home/:id/settings", [checkAuth, checkHome],(req:Request, res:Response) => {
-  homeController.info(req,res);
-});
+// app.get("/home/:id/settings", [checkAuth, checkHome],(req:Request, res:Response) => {
+//   homeController.info(req,res);
+// });
 
 app.get("/home/:id/edit",[checkAuth, checkHome],(req:Request, res:Response) => {
   homeController.edit(req,res);

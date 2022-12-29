@@ -2,10 +2,16 @@
 <%- include('../../particles/navigation.ejs') %>
 <%- include('../navigation.ejs') %>
 
-<h1>Освещеннние</h1>
+<!-- <h1>Освещеннние</h1> -->
 
-<a href="/home/<%= item[0].id %>/lights/create"> Создать освещения</a>
-
+<!-- <a class="ml-auto mb-1 mr-auto mt-2 h-7  font-semibold rounded-md border border-slate-200 bg-blue-500 text-slate-900 " href="/home/<%= item[0].id %>/lights/create"> Создать освещения</a> -->
+<div class="flex items-center justify-between mt-5 float-right mr-4">
+<a href="/home/<%= item[0].id %>/lights/create" class="hover:bg-blue-400 group flex items-center rounded-md bg-indigo-700 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+    <svg width="20" height="20" fill="currentColor" class="mr-2" aria-hidden="true">
+      <path d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
+    </svg>
+    New
+  </a></div>
 <div class="m-4">
 <% for(let i = 0; i<lights.length; i++){ %>
     <div class="border-solid border-2 border-gray-600 rounded-lg inline-block p-4 ml-2 mt-1.5">

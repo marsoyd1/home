@@ -48,6 +48,8 @@ export class HomeController {
                 username: req.session.username,
                 loyalHome: req.session.loyalHome,
             });
+            
+            req.session.loyalHome = undefined;
         }else{
             res.redirect("/login");
         };
