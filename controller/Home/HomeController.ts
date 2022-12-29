@@ -42,14 +42,15 @@ export class HomeController {
 
     async create(req: Request, res: Response){
         if(req.body.auth == 'login'){
+            let loayl = req.session.loyalHome; 
+            req.session.loyalHome = undefined;
             res.render("home/create", {
                 auth: req.session.auth,
                 authId: req.session.authId,
                 username: req.session.username,
-                loyalHome: req.session.loyalHome,
+                loyalHome: loayl,
             });
             
-            req.session.loyalHome = undefined;
         }else{
             res.redirect("/login");
         };

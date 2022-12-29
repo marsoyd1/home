@@ -60,15 +60,16 @@ export class LightsController{
     async createLights(req: Request, res: Response){
         if(req.body.auth == 'login'){
             if(req.body.authHome == 'yes'){
+                let loayl = req.session.loyalLights; 
+                req.session.loyalLights =undefined;
 
                 res.render("home/lights/create",{
                     auth: req.session.auth,
                     username: req.session.username,
                     authId: req.session.authId,
                     home_id: req.params.id  ,
-                    loyalLights: req.session.loyalLights
+                    loyalLights: loayl
                 });
-                req.session.loyalLights =undefined;
             }else{
                 res.redirect("/home" );
             };

@@ -85,13 +85,14 @@ export class AutorizationController{
 
     registration(req: Request, res: Response){
         if(req.body.auth != 'login'){
+            let loayl = req.session.errRegistSt; 
+            req.session.errRegistSt = undefined;
              res.render("autorization/registration",{
                 auth: req.session.auth,
                 errRegist: req.session.errRegist,
-                errRegistSt: req.session.errRegistSt,
+                errRegistSt: loayl,
                 username: req.session.username,
             });
-            req.session.errRegistSt = undefined;
         }else{
             res.redirect("/");
         };
@@ -99,13 +100,14 @@ export class AutorizationController{
 
     login(req: Request, res: Response){
         if(req.body.auth != 'login'){
+            let loayl = req.session.loyalPass; 
+            req.session.loyalPass = undefined; 
             res.render("autorization/login",{
                 auth: req.session.auth,
                 username: req.session.username,
-                loyalPass: req.session.loyalPass,
+                loyalPass: loayl,
                 loyalPassb: req.session.loyalPassb,
             });
-            req.session.loyalPass = undefined;           
         }else{
             res.redirect("/");
         };

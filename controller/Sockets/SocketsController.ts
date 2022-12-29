@@ -60,15 +60,16 @@ export class SocketsController{
     async create(req: Request, res: Response){
         if(req.body.auth == 'login'){
             if(req.body.authHome == 'yes'){
+                let loayl = req.session.loyalSockets; 
+                req.session.loyalSockets = undefined;
 
                 res.render("home/sockets/create",{
                     auth: req.session.auth,
                     username: req.session.username,
                     authId: req.session.authId,
                     home_id: req.params.id  ,
-                    loyalLights: req.session.loyalSockets,
+                    loyalLights: loayl,
                 });
-                req.session.loyalSockets = undefined;
             }else{
                 res.redirect("/home");
             };
